@@ -51,15 +51,23 @@ data() {
     
         ...
 
-        name: {
-            valid: false, // We suppose that field is initially invalid.
-            message: null, // We suppose that there is still no error message for this field.
-            constraints: [required, maxLenth(20)] // List of validation constraints, imported from the package
-        },
-        email: {
-            valid: false,
-            message: null,
-            constraints: [required, maxLenth(6), isEmail]
+        formObject: {
+
+            ...
+
+            name: {
+                valid: false, // We suppose that field is initially invalid.
+                message: null, // We suppose that there is still no error message for this field.
+                constraints: [required, maxLenth(20)] // List of validation constraints, imported from the package
+            },
+            email: {
+                valid: false,
+                message: null,
+                constraints: [required, maxLenth(6), isEmail]
+            }
+
+            ...
+
         }
 
         ...

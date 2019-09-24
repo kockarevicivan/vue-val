@@ -1,7 +1,11 @@
 {
   "name": "vue-val",
-  "version": "1.0.2",
-  "description": "Validation package for VueJS Zkittlez UI kit. Can be used with other VueJS components though.",
+  "version": "1.0.3",
+  "description": "Validation toolkit for VueJS. Offers both custom and 'plug and play' validation.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kockarevicivan/vue-val.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
