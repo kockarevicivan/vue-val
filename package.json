@@ -1,0 +1,11 @@
+{
+  "name": "vue-val",
+  "version": "1.0.1",
+  "description": "Validation package for VueJS Zkittlez UI kit. Can be used with other VueJS components though.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ivan Kockarevic",
+  "license": "MIT"
+}
