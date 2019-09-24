@@ -1,6 +1,6 @@
 {
   "name": "vue-val",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Validation package for VueJS Zkittlez UI kit. Can be used with other VueJS components though.",
   "main": "index.js",
   "scripts": {

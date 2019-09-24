@@ -44,21 +44,27 @@ isUrl(value);  // Checks whether passed value is a proper URL.
 ```
 
 ### Integrated validation
-Package can be used with built-in validation. First, create a validation object for your form, in the following format:
+Package can be used with built-in validation. First, in the data section of your component, create a validation object for your form, in the following format:
 ```
-const formObject = {
-    ...
-    name: {
-        valid: false, // We suppose that field is initially invalid.
-        message: null, // We suppose that there is still no error message for this field.
-        constraints: [required, maxLenth(20)] // List of validation constraints, imported from the package
-    },
-    email: {
-        valid: false,
-        message: null,
-        constraints: [required, maxLenth(6), isEmail]
-    }
-    ...
+data() {
+    return {
+    
+        ...
+
+        name: {
+            valid: false, // We suppose that field is initially invalid.
+            message: null, // We suppose that there is still no error message for this field.
+            constraints: [required, maxLenth(20)] // List of validation constraints, imported from the package
+        },
+        email: {
+            valid: false,
+            message: null,
+            constraints: [required, maxLenth(6), isEmail]
+        }
+
+        ...
+        
+    };
 };
 ```
 
