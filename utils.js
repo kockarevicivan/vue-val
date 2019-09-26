@@ -21,3 +21,8 @@ export const validate = (formObject) => {
     
     return true;
 };
+
+export default {
+    validate,
+    set
+};
