@@ -1,16 +1,16 @@
 # vue-val
 
-Validation toolkit for VueJS. Offers both custom and 'plug and play' validation. 
+Validation toolkit for VueJS. Offers both manual and 'plug and play' validation. 
 
 ## Usage
 
 ### Manual validation
 First, import necessary validation methods into your component:
 ```
-import { isEmail } from 'vue-val/validation'
+import { isEmail } from 'vue-val'
 ```
 
-Then, on field change, call the proper validation method:
+Then, on field change (or any other event you want to handle), call the proper validation method:
 ```
 methods() {
     ...
@@ -29,7 +29,7 @@ Validation result will be in the following format (validation indicator and erro
 }
 ```
 
-Here is a list of currently available validation methods:
+Here's a list of currently available validation methods:
 ```
 required(value); // Checks whether passed variable contains a value.
 notNull(value); // Checks whether passed variable is null.
@@ -44,7 +44,7 @@ isUrl(value);  // Checks whether passed value is a proper URL.
 ```
 
 ### Integrated validation
-Package can be used with built-in validation. First, in the data section of your component, create a validation object for your form, in the following format:
+Package can be used with its 'plug and play' validation. First, in the data section of your component, create a validation object for your form, in the following format:
 ```
 data() {
     return {
@@ -57,12 +57,12 @@ data() {
 
             name: {
                 valid: false, // We suppose that field is initially invalid.
-                message: null, // We suppose that there is still no error message for this field.
+                error: null, // We suppose that there is still no error message for this field.
                 constraints: [required, maxLenth(20)] // List of validation constraints, imported from the package
             },
             email: {
                 valid: false,
-                message: null,
+                error: null,
                 constraints: [required, maxLenth(6), isEmail]
             }
 
@@ -76,51 +76,56 @@ data() {
 };
 ```
 
-Second, import methods 'setField' and 'getError' from the package and wrap them with Vue component methods (since package methods cannot be directly invoked from VueJS markup) like this:
+Second, import methods 'set' and 'validate' from the utils submodule of the package and put them in the data of the component (since package methods cannot be directly invoked from VueJS markup) like this:
 ```
-setField(key, value) {
-    return setField(this.formObject, key, value); // Object that we previously created, name of the field as 'key' and current value of the field.
-},
-getError(key) {
-    return getErrorText(this.formObject, key); // Object that we previously created and name of the field as 'key'.
-}
+import { set, validate } from './vue-val/utils';
+
+data() {
+    return {
+    
+        ...
+        set, // Map 'set' to a local data property.
+        validate, // Map 'validate' to a local data property.
+        formObject: {
+
+            ...
+
+            name: {
+                valid: false,
+                error: null,
+                constraints: [required, maxLenth(20)]
+            },
+            email: {
+                valid: false,
+                error: null,
+                constraints: [required, maxLenth(6), isEmail]
+            }
+
+            ...
+
+        }
+
+        ...
+        
+    };
+};
 ```
 
-Third, use these methods inside your markup:
+Third, use these methods inside your component:
 ```
 <!-- For field 'name' -->
-<span class="error-message">{{ getError('name') }}</span>
-<input type="text" @change="value => setField('name', value)" />
+<span class="error-message">{{ form.name.error }}</span>
+<input type="text" v-on:change="e => set('name', e.target.value, form)" />
 
 <!-- For field 'email' -->
-<span class="error-message">{{ getError('email') }}</span>
-<input type="text" @change="value => setField('email', value)" />
+<span class="error-message">{{ form.email.error }}</span>
+<input type="text" v-on:change="e => set('email', e.target.value, form)" />
+
+<!-- Conditionally disabled button -->
+<button :disabled="!validate(form)">Submit form<button/>
 ```
 
-You can also import one more method, called 'isFormValid' from the package, to check whether the form object is valid. For example, to disable submit button if the form is invalid:
-
-First, import the method:
-```
-import { isFormValid } from 'vue-val/validation'
-```
-
-Second, wrap the method with internal component method:
-```
-methods() {
-    ...
-    isFormValid() {
-        return isObjectValid(this.formObject);
-    }
-    ...
-}
-```
-
-Third, use it in markup:
-```
-<button :disabled="!isFormValid()">Submit form<button/>
-```
-
-### Custom messages and custom validations
+### Custom messages
 You can also set custom error messages like this:
 
 ```
@@ -131,3 +136,5 @@ import { messages } from 'vue-val'
 messages.required = () => `M8, field is required!`;
 messages.maxLength = (maxCharacters) => `We don't allow more than ${maxCharacters} characters!!`;
 ```
+
+Note that every message is defined as lambda expression. This is due to the messages that depend on one or more parameters (e.g. maximum number of characters).
