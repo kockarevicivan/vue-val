@@ -51,7 +51,7 @@ data() {
     
         ...
 
-        formObject: {
+        form: {
 
             ...
 
@@ -78,7 +78,7 @@ data() {
 
 Second, import methods 'set' and 'validate' from the utils submodule of the package and put them in the data of the component (since package methods cannot be directly invoked from VueJS markup) like this:
 ```
-import { set, validate } from './vue-val/utils';
+import { set, validate } from 'vue-val/utils';
 
 data() {
     return {
@@ -86,7 +86,7 @@ data() {
         ...
         set, // Map 'set' to a local data property.
         validate, // Map 'validate' to a local data property.
-        formObject: {
+        form: {
 
             ...
 
