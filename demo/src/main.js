@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
-// Custom messages.
+
+// Setting custom messages.
 import messages from './vue-val/messages'
 
 messages.required = () => 'Nein.'

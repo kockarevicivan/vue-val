@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import { required } from './vue-val/index';
-import { set, validate } from './vue-val/utils';
+import { required } from 'vue-val';
+import { set, validate } from 'vue-val/utils';
 
 export default {
 	name: 'app',
