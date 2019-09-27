@@ -22,7 +22,7 @@ export const validate = (formObject) => {
     return true;
 };
 
-export default {
+export {
     validate,
     set
 };

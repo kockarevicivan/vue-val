@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { required } from 'vue-val';
+import { required, maxLength } from 'vue-val';
 import { set, validate } from 'vue-val/utils';
 
 export default {
@@ -27,7 +27,7 @@ export default {
 				name: {
 					valid: false,
 					error: null,
-					constraints: [required]
+					constraints: [required, maxLength(20)]
 				},
 				email: {
 					valid: false,

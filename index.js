@@ -13,7 +13,7 @@ export const isEmail = (value) => ({ valid: lambdas.isEmail(value), message: mes
 export const isNumeric = (value) => ({ valid: lambdas.isNumeric(value), message: messages.isNumeric() });
 export const isUrl = (value) => ({ valid: lambdas.isUrl(value), message: messages.isUrl() });
 
-export default {
+export {
     messages,
     utils
 };
