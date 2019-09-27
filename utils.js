@@ -21,8 +21,3 @@ export const validate = (formObject) => {
     
     return true;
 };
-
-export {
-    validate,
-    set
-};
