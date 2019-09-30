@@ -76,9 +76,9 @@ data() {
 };
 ```
 
-Second, import methods 'set' and 'validate' from the utils submodule of the package and put them in the data of the component (since package methods cannot be directly invoked from VueJS markup) like this:
+Second, import methods 'set' and 'validate' and put them in the data of the component (since package methods cannot be directly invoked from VueJS markup) like this:
 ```
-import { set, validate } from 'vue-val/utils';
+import { set, validate } from 'vue-val';
 
 data() {
     return {
