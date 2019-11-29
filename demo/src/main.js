@@ -4,8 +4,8 @@ import App from './App.vue'
 // Setting custom messages.
 import { messages } from 'vue-val'
 
-messages.required = () => 'Nein.'
-messages.maxLength = (maxCharacters) => `Maximum of the maximum is ${maxCharacters} characters.`,
+messages.required = () => 'Nein. :('
+messages.maxLength = (maxCharacters) => `The highest we can go is ${maxCharacters} characters. :(`,
 
 Vue.config.productionTip = false
 
