@@ -40,7 +40,10 @@ minLength(min)(value); // Checks whether passed value's length is greater than p
 isValue(allowedValues)(value); // Checks whether passed value is one of the passed allowed values.
 isEmail(value); // Checks whether passed value is a proper e-mail address.
 isNumeric(value); // Checks whether passed value is numeric.
+isTime(value); // Checks whether passed value is a valid date string (accepts '/', '-' and '.' delimiters).
+isDate(value); // Checks whether passed value is a valid time string.
 isUrl(value);  // Checks whether passed value is a proper URL.
+customRegex(value);  // Checks whether value matches the provided regex.
 ```
 
 ### Integrated validation
