@@ -8,5 +8,8 @@ export default {
     isValue: (values) => `Value must be one of the following: ${values.join(', ')}`,
     isEmail: () => `Value must be an e-mail address.`,
     isNumeric: () => `Value must be numeric.`,
-    isUrl: () => `Value must be a valid URL.`
+    isTime: () => `Time must be in a valid format: [hh:mm].`,
+    isDate: () => `Date must be in a valid format: [dd.mm.yyyy.].`,
+    isUrl: () => `Value must be a valid URL.`,
+    customRegex: () => `Invalid format.`
 };

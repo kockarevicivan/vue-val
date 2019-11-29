@@ -11,7 +11,10 @@ const facade = {
     isValue: (values) => (value) => ({ valid: lambdas.isValue(values)(value), message: messages.isValue(values) }),
     isEmail: (value) => ({ valid: lambdas.isEmail(value), message: messages.isEmail() }),
     isNumeric: (value) => ({ valid: lambdas.isNumeric(value), message: messages.isNumeric() }),
+    isTime: (value) => ({ valid: lambdas.isTime(value), message: messages.isTime() }),
+    isDate: (value) => ({ valid: lambdas.isDate(value), message: messages.isDate() }),
     isUrl: (value) => ({ valid: lambdas.isUrl(value), message: messages.isUrl() }),
+    customRegex: (value) => ({ valid: lambdas.customRegex(value), message: messages.customRegex() }),
 
     set: (key, value, formObject) => {
         formObject[key].value = value;
@@ -46,7 +49,10 @@ export const minLength = facade.minLength;
 export const isValue = facade.isValue;
 export const isEmail = facade.isEmail;
 export const isNumeric = facade.isNumeric;
+export const isTime = facade.isTime;
+export const isDate = facade.isDate;
 export const isUrl = facade.isUrl;
+export const customRegex = facade.customRegex;
 
 export const set = facade.set;
 export const validate = facade.validate;
@@ -61,13 +67,13 @@ export default {
     isValue: facade.isValue,
     isEmail: facade.isEmail,
     isNumeric: facade.isNumeric,
+    isTime: facade.isTime,
+    isDate: facade.isDate,
     isUrl: facade.isUrl,
+    customRegex: facade.customRegex,
 
     set: facade.set,
     validate: facade.validate,
-
-    // messages: messages,
-    // lambdas: lambdas
 };
 
 export { default as messages } from './messages';
