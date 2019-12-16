@@ -2,6 +2,7 @@
 export default {
     required: () => `Field is required.`,
     notNull: () => `Field cannot be null.`,
+    notNull: () => `Field cannot be undefined.`,
     maxValue: (maximum) => `Value cannot be greater than ${maximum}.`,
     minValue: (minimum) => `Value must be greater than ${minimum}.`,
     maxLength: (maximumCharacters) => `Maximum length is ${maximumCharacters} characters.`,

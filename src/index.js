@@ -14,6 +14,11 @@ const facade = {
     notNull: (value) => ({ valid: lambdas.notNull(value), message: messages.notNull() }),
 
     /** 
+     * Checks whether value is explicitly undefined.
+     */
+    notUndefined: (value) => ({ valid: lambdas.notUndefined(value), message: messages.notUndefined() }),
+
+    /** 
      * Checks whether value is greater than the provided maximum.
      */
     maxValue: (maximum) => (value) => ({ valid: lambdas.maxValue(maximum)(value), message: messages.maxValue(maximum) }),
@@ -103,6 +108,7 @@ const facade = {
 // Validation methods export.
 export const required = facade.required;
 export const notNull = facade.notNull;
+export const notUndefined = facade.notUndefined;
 export const maxValue = facade.maxValue;
 export const minValue = facade.minValue;
 export const maxLength = facade.maxLength;
@@ -123,6 +129,7 @@ export const validate = facade.validate;
 export default {
     required: facade.required,
     notNull: facade.notNull,
+    notUndefined: facade.notUndefined,
     maxValue: facade.maxValue,
     minValue: facade.minValue,
     maxLength: facade.maxLength,

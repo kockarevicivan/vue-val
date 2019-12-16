@@ -1,7 +1,8 @@
 // List of default validation lambas, dependant on 1 (always value) or more parameters (e.g. maxCharacters).
 export default {
-    required: (value) => !!value && (typeof value == 'string' ? !!(value.length && value.trim().length) : true),
+    required: (value) => (value != null && value != undefined) && (typeof value == 'string' ? !!(value.length && value.trim().length) : true),
     notNull: (value) => value != null,
+    notUndefined: (value) => value != undefined,
     maxValue: (maximum) => (value) => value <= maximum,
     minValue: (minimum) => (value) => value >= minimum,
     maxLength: (maximumCharacters) => (value) => value ? value.length <= maximumCharacters : true,
