@@ -61,7 +61,12 @@ const facade = {
      * Checks whether value is shorter in length than provided maximum.
      */
     maxLength: function (maximumCharacters) {
-        return function (value) { return ({ valid: lambdas.maxLength(maximumCharacters)(value), message: messages.maxLength(maximumCharacters) }) };
+        return function (value) {
+            return ({
+                valid: lambdas.maxLength(maximumCharacters)(value),
+                message: messages.maxLength(maximumCharacters)
+            });
+        };
     },
 
     /**
@@ -174,7 +179,7 @@ const facade = {
      */
     validate: function (formObject) {
         for(let field in formObject)
-            if(!formObject[field].valid) return false;    
+            if(!formObject[field].valid) return false;
 
         return true;
     }
