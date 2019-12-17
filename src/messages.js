@@ -2,7 +2,7 @@
 export default {
     required: function () { return  `Field is required.`; },
     notNull: function () { return  `Field cannot be null.`; },
-    notNull: function () { return  `Field cannot be undefined.`; },
+    notUndefined: function () { return  `Field cannot be undefined.`; },
     maxValue: function (maximum) { return  `Value cannot be greater than ${maximum}.`; },
     minValue: function (minimum) { return  `Value must be greater than ${minimum}.`; },
     maxLength: function (maximumCharacters) { return  `Maximum length is ${maximumCharacters} characters.`; },
