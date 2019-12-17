@@ -6,78 +6,153 @@ const facade = {
     /** 
      * Checks whether value is Falsy, or, if value is a string, whether it's Falsy when trimmed.
      */
-    required: (value) => ({ valid: lambdas.required(value), message: messages.required() }),
+    required: function (value) {
+        return ({
+            valid: lambdas.required(value),
+            message: messages.required()
+        });
+    },
 
     /** 
      * Checks whether value is explicitly null.
      */
-    notNull: (value) => ({ valid: lambdas.notNull(value), message: messages.notNull() }),
+    notNull: function (value) {
+        return ({
+            valid: lambdas.notNull(value),
+            message: messages.notNull()
+        });
+    },
 
     /** 
      * Checks whether value is explicitly undefined.
      */
-    notUndefined: (value) => ({ valid: lambdas.notUndefined(value), message: messages.notUndefined() }),
+    notUndefined: function (value) {
+        return ({
+            valid: lambdas.notUndefined(value),
+            message: messages.notUndefined()
+        });
+    },
 
     /** 
      * Checks whether value is greater than the provided maximum.
      */
-    maxValue: (maximum) => (value) => ({ valid: lambdas.maxValue(maximum)(value), message: messages.maxValue(maximum) }),
+    maxValue: function (maximum) {
+        return function (value) {
+            return ({
+                valid: lambdas.maxValue(maximum)(value),
+                message: messages.maxValue(maximum)
+            });
+        };
+    },
 
     /** 
      * Checks whether value is lower than the provided minimum.
      */
-    minValue: (minimum) => (value) => ({ valid: lambdas.minValue(minimum)(value), message: messages.minValue(minimum) }),
+    minValue: function (minimum) {
+        return function (value) {
+            return ({
+                valid: lambdas.minValue(minimum)(value),
+                message: messages.minValue(minimum)
+            });
+        };
+    },
 
     /**
      * Checks whether value is shorter in length than provided maximum.
      */
-    maxLength: (maximumCharacters) => (value) => ({ valid: lambdas.maxLength(maximumCharacters)(value), message: messages.maxLength(maximumCharacters) }),
+    maxLength: function (maximumCharacters) {
+        return function (value) { return ({ valid: lambdas.maxLength(maximumCharacters)(value), message: messages.maxLength(maximumCharacters) }) };
+    },
 
     /**
      * Checks whether value is longer in length than provided minimum.
      */
-    minLength: (minimumCharacters) => (value) => ({ valid: lambdas.minLength(minimumCharacters)(value), message: messages.minLength(minimumCharacters) }),
+    minLength: function (minimumCharacters) {
+        return function (value) { 
+            return ({
+                valid: lambdas.minLength(minimumCharacters)(value),
+                message: messages.minLength(minimumCharacters)
+            });
+        };
+    },
 
     /**
      * Checks whether value is a member of the provided values list.
      */
-    isValue: (values) => (value) => ({ valid: lambdas.isValue(values)(value), message: messages.isValue(values) }),
+    isValue: function (values) {
+        return function (value) {
+            return ({
+                valid: lambdas.isValue(values)(value),
+                message: messages.isValue(values)
+            });
+        };
+    },
 
     /**
      * Checks whether value is a valid e-mail address.
      */
-    isEmail: (value) => ({ valid: lambdas.isEmail(value), message: messages.isEmail() }),
+    isEmail: function (value) {
+        return ({
+            valid: lambdas.isEmail(value),
+            message: messages.isEmail()
+        });
+    },
 
     /**
      * Checks whether value is explicitly numeric.
      */
-    isNumeric: (value) => ({ valid: lambdas.isNumeric(value), message: messages.isNumeric() }),
+    isNumeric: function (value) {
+        return ({
+            valid: lambdas.isNumeric(value),
+            message: messages.isNumeric()
+        });
+    },
 
     /**
      * Checks whether value is in a valid time format.
      */
-    isTime: (value) => ({ valid: lambdas.isTime(value), message: messages.isTime() }),
+    isTime: function (value) {
+        return ({
+            valid: lambdas.isTime(value),
+            message: messages.isTime()
+        });
+    },
 
     /**
      * Checks whether value is in a valid date format.
      */
-    isDate: (value) => ({ valid: lambdas.isDate(value), message: messages.isDate() }),
+    isDate: function (value) {
+        return ({
+            valid: lambdas.isDate(value),
+            message: messages.isDate()
+        });
+    },
 
     /**
      * Checks whether value is lower than the provided minimum.
      */
-    isUrl: (value) => ({ valid: lambdas.isUrl(value), message: messages.isUrl() }),
+    isUrl: function (value) {
+        return ({
+            valid: lambdas.isUrl(value),
+            message: messages.isUrl()
+        });
+    },
 
     /**
      * Checks whether value matches the provided regex.
      */
-    customRegex: (value) => ({ valid: lambdas.customRegex(value), message: messages.customRegex() }),
+    customRegex: function (value) {
+        return ({
+            valid: lambdas.customRegex(value),
+            message: messages.customRegex()
+        });
+    },
 
 
     /**
      * Utility function for form field setting and auto-validation.
      */
-    set: (key, value, formObject) => {
+    set: function (key, value, formObject) { 
         formObject[key].value = value;
         formObject[key].error = null;
     
@@ -97,7 +172,7 @@ const facade = {
     /**
      * Utility function for validation of entire form.
      */
-    validate: (formObject) => {
+    validate: function (formObject) {
         for(let field in formObject)
             if(!formObject[field].valid) return false;    
 

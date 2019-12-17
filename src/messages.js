@@ -1,17 +1,17 @@
 // List of default error messages, dependant on 0 or more parameters (e.g. maxCharacters).
 export default {
-    required: () => `Field is required.`,
-    notNull: () => `Field cannot be null.`,
-    notNull: () => `Field cannot be undefined.`,
-    maxValue: (maximum) => `Value cannot be greater than ${maximum}.`,
-    minValue: (minimum) => `Value must be greater than ${minimum}.`,
-    maxLength: (maximumCharacters) => `Maximum length is ${maximumCharacters} characters.`,
-    minLength: (minimumCharacters) => `Minimum length is ${minimumCharacters} characters.`,
-    isValue: (values) => `Value must be one of the following: ${values.join(', ')}`,
-    isEmail: () => `Value must be an e-mail address.`,
-    isNumeric: () => `Value must be numeric.`,
-    isTime: () => `Time must be in a valid format: [hh:mm].`,
-    isDate: () => `Date must be in a valid format: [dd.mm.yyyy.].`,
-    isUrl: () => `Value must be a valid URL.`,
-    customRegex: () => `Invalid format.`
+    required: function () { return  `Field is required.`; },
+    notNull: function () { return  `Field cannot be null.`; },
+    notNull: function () { return  `Field cannot be undefined.`; },
+    maxValue: function (maximum) { return  `Value cannot be greater than ${maximum}.`; },
+    minValue: function (minimum) { return  `Value must be greater than ${minimum}.`; },
+    maxLength: function (maximumCharacters) { return  `Maximum length is ${maximumCharacters} characters.`; },
+    minLength: function (minimumCharacters) { return  `Minimum length is ${minimumCharacters} characters.`; },
+    isValue: function (values) { return  `Value must be one of the following: ${values.join(', ')}`; },
+    isEmail: function () { return  `Value must be an e-mail address.`; },
+    isNumeric: function () { return  `Value must be numeric.`; },
+    isTime: function () { return  `Time must be in a valid format: [hh:mm].`; },
+    isDate: function () { return  `Date must be in a valid format: [dd.mm.yyyy.].`; },
+    isUrl: function () { return  `Value must be a valid URL.`; },
+    customRegex: function () { return  `Invalid format.`; }
 };

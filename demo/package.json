@@ -10,7 +10,7 @@
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.1",
-    "vue-val": "^1.1.9"
+    "vue-val": "^1.2.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
